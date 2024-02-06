@@ -34,8 +34,26 @@ function animate() {
 
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
+	// Makes the slideshow present with the amount of images in the array.
+	if (mCurrentIndex >= mImages.length) {
+		mCurrentIndex = 0
+	}
+	if (mCurrentIndex < 0) {
+		mCurrentIndex = mImages.length - 1
+	}
 	//Access the img element and replace its source
+	document.getElementById('photo').src = mImages[mCurrentIndex].imgPath
+	// Gets the classes for each element and assigns it to a variable
+	var location = document.getElementsByClassName('location')[0]
+	var description = document.getElementsByClassName('description')[0]
+	var date = document.getElementsByClassName('date')[0]
+	// Changes the inner HTML.
+	location.innerHTML = "Location: " + mImages[mCurrentIndex].location
+	description.innerHTML = "Description: " + mImages[mCurrentIndex].description
+	date.innerHTML = "Date: " + mImages[mCurrentIndex].date
 	//with a new image from your images array which is loaded 
+	var mLastFrameTime = 0
+	mCurrentIndex += 1
 	//from the JSON string
 	console.log('swap photo');
 }
@@ -67,9 +85,9 @@ function makeGalleryImageOnloadCallback(galleryImage) {
 }
 
 $(document).ready(function () {
-
+	
 	// This initially hides the photos' metadata information
-	$('.details').eq(0).hide();
+	// $('.details').eq(0).hide();
 	fetchJSON()
 
 });
@@ -95,15 +113,27 @@ function GalleryImage() {
 function fetchJSON() {
 	// When the XMLHttpRequest() state changes, it will trigger a function.
 	mRequest.onreadystatechange = function () {
-		// If it loads, it will parse the JSON file. and get the text from it.
+		// If it loads, it will parse the JSON file and get the text from it.
 		if (mRequest.readyState == 4 && mRequest.status == 200) {
 			var mJson = JSON.parse(mRequest.responseText);
+			console.log(mJson.images)
+
+			iterateJSON(mJson)
 		} else {
 			// If it doesn't load, it will send an error message in the console.
 			console.log("We connected to the server, but it returned an error.");
 		}
 	}
 	// The XMLHttpRequest() will open and send.
-	mRequest.open("GET", mUrl, true)
+	mRequest.open("GET", mUrl)
 	mRequest.send()
+}
+function iterateJSON(mJson) {
+	for (var x = 0; x < mJson.images.length; x++) {
+		mImages[x] = new GalleryImage()
+		mImages[x].location = mJson.images[x].imgLocation
+		mImages[x].description = mJson.images[x].description
+		mImages[x].date = mJson.images[x].date
+		mImages[x].imgPath = mJson.images[x].imgPath
+	}
 }
