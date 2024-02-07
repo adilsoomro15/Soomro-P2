@@ -89,7 +89,14 @@ $(document).ready(function () {
 	// This initially hides the photos' metadata information
 	// $('.details').eq(0).hide();
 	fetchJSON()
-
+	$('img.moreIndicator').on('click', function () {
+		if ($(this).hasClass('rot90')) {
+			$(this).removeClass('rot90').addClass('rot270');
+		} else {
+			$(this).removeClass('rot270').addClass('rot90');
+		}
+		$('div.details').slideToggle('slow', animate());
+	});
 });
 
 window.addEventListener('load', function () {
@@ -137,3 +144,4 @@ function iterateJSON(mJson) {
 		mImages[x].imgPath = mJson.images[x].imgPath
 	}
 }
+
