@@ -97,6 +97,24 @@ $(document).ready(function () {
 		}
 		$('div.details').slideToggle('slow', animate());
 	});
+	$('#nextPhoto').position({
+		my: 'right',
+		at: 'right',
+		of: '#nav'
+	});
+	$('#prevPhoto').on('click', function () {
+		mCurrentIndex--;
+		swapPhoto()
+		mCurrentIndex--;
+		console.log(mCurrentIndex)
+		
+	});
+	$('#nextPhoto').on('click', function () {
+		mCurrentIndex++;
+		swapPhoto()
+		mCurrentIndex--;
+		console.log(mCurrentIndex)
+	});
 });
 
 window.addEventListener('load', function () {

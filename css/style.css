@@ -36,6 +36,8 @@ body {
 
 .thumbnail {
 	position: relative;
+	max-width: 100%;
+	max-height: 100%;
 	box-shadow: 1px 3px 20px 0px;
 }
 
@@ -59,6 +61,10 @@ body {
 	height: 42px;
 	width: 42px;
 }
+#nav #prevPhoto:hover,
+#nav #nextPhoto:hover {
+	opacity: 0.8;
+}
 
 .details p {
 	margin-top: 20px;
@@ -78,7 +84,9 @@ Make it animate nicely. You'll need CSS3 for this*/
 
 /*Add CSS styles to rotate the element 180deg
 Make it animate nicely. You'll need CSS3 for this*/
-.rot180 {}
+.rot180 {
+	transform: rotate(180deg);
+}
 
 /*Add CSS styles to rotate the element 270deg
 Make it animate nicely. You'll need CSS3 for this*/
