@@ -1,0 +1,34 @@
+{
+    "images": [
+        {
+            "imgPath": "img/places/US Capitol.jpeg",
+            "imgLocation": "Washington D.C.",
+            "description": "United States Capitol",
+            "date": "December 2019"
+        },
+        {
+            "imgPath": "img/places/Washington Monument.jpeg",
+            "imgLocation": "Washington D.C.",
+            "description": "Washington Monument",
+            "date": "December 2019"
+        },
+        {
+            "imgPath": "img/places/Ithacca Falls.jpeg",
+            "imgLocation": "Ithacca, New York",
+            "description": "Ithacca Falls",
+            "date": "August 2019"
+        },
+    {
+      "imgPath": "img/places/Paris.png",
+      "imgLocation": "Paris, France",
+      "description": "Eiffel Tower",
+      "date": "August 2018"
+    },
+     {
+      "imgPath": "img/places/London.jpeg",
+      "imgLocation": "London, United Kingdom",
+      "description": "Tower Bridge",
+      "date": "August 2018"
+    }
+  ]
+}
