@@ -1,7 +1,7 @@
 body {
 	overflow: auto;
 	font-family: 'Century Gothic', sans-serif;
-	background-image: url(/img/background-pic.jpeg);
+	background-image: url(img/background-pic.jpeg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	color: white;
