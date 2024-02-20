@@ -35,6 +35,7 @@ function animate() {
 function swapPhoto() {
 	//Add code here to access the #slideShow element.
 	// Makes the slideshow present with the amount of images in the array.
+	// Makes the Current Index = 0 when the length exceeds the amount of pictures.
 	if (mCurrentIndex >= mImages.length) {
 		mCurrentIndex = 0
 	}
@@ -92,6 +93,7 @@ $(document).ready(function () {
 		mUrl = "images.json";
 	}
 	fetchJSON()
+	// When the more button is clicked, if the button has a class of rot90, it will remove it and make it turn 270 degrees. Otherwise, it will add the class of 90 degrees.
 	$('img.moreIndicator').on('click', function () {
 		if ($(this).hasClass('rot90')) {
 			$(this).removeClass('rot90').addClass('rot270');
@@ -100,11 +102,13 @@ $(document).ready(function () {
 		}
 		$('div.details').slideToggle('slow', animate());
 	});
+	// Changes the position of the next photo button.
 	$('#nextPhoto').position({
 		my: 'right',
 		at: 'right',
 		of: '#nav'
 	});
+	// Moves the picture to the previous image when the button is clicked.
 	$('#prevPhoto').on('click', function () {
 		mCurrentIndex--;
 		swapPhoto()
@@ -112,6 +116,7 @@ $(document).ready(function () {
 		console.log(mCurrentIndex)
 		
 	});
+	// Moves the picture to the next image when the button is clicked.
 	$('#nextPhoto').on('click', function () {
 		mCurrentIndex++;
 		swapPhoto()
@@ -157,6 +162,7 @@ function fetchJSON() {
 	mRequest.send()
 }
 function iterateJSON(mJson) {
+	// Updates the description for each image
 	for (var x = 0; x < mJson.images.length; x++) {
 		mImages[x] = new GalleryImage()
 		mImages[x].location = mJson.images[x].imgLocation
